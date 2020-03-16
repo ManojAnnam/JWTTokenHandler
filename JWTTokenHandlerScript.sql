@@ -16,3 +16,5 @@ CREATE TABLE [dbo].[RefreshToken](
 CONSTRAINT [RefreshToken_User] FOREIGN KEY (UserID)
 REFERENCES [dbo].[User] ([UserID])
 )
+
+INSERT INTO [dbo].[User] values ('Manoj','123456')

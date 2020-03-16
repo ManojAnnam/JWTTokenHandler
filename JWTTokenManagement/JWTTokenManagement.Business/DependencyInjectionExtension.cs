@@ -1,9 +1,8 @@
 ﻿using JWTTokenManagement.Repository;
+using JWTTokenManagement.Repository.Contracts;
+using JWTTokenManagement.Repository.Implementations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JWTTokenManagement.Business
 {
@@ -12,7 +11,7 @@ namespace JWTTokenManagement.Business
         public static IServiceCollection RegisterBusinessDependencies(this IServiceCollection services, IConfiguration configuration)
         {
             services.RegisterRepositoryDependencies(configuration);
-           // services.AddTransient<IAuthorizationRepository, AuthorizationRepository>();
+            services.AddTransient<IAuthorizationRepository, AuthorizationRepository>();
             return services;
         }
     }
