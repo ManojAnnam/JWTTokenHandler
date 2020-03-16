@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTTokenManagement.API", "JWTTokenManagement.API\JWTTokenManagement.API.csproj", "{DB956717-A571-4C1D-9877-B58B4C9039D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTTokenManagement.Business", "JWTTokenManagement.Business\JWTTokenManagement.Business.csproj", "{402ADC05-DAFF-442B-99D8-42D070F37DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTTokenManagement.Repository", "JWTTokenManagement.Repository\JWTTokenManagement.Repository.csproj", "{1AAF1D79-96F2-430C-B22F-0E9EEF765FD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTTokenManagement.Models", "JWTTokenManagement.Models\JWTTokenManagement.Models.csproj", "{FF4FDD5A-C963-423B-A00A-7682ED6BD4BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{DB956717-A571-4C1D-9877-B58B4C9039D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB956717-A571-4C1D-9877-B58B4C9039D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB956717-A571-4C1D-9877-B58B4C9039D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402ADC05-DAFF-442B-99D8-42D070F37DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402ADC05-DAFF-442B-99D8-42D070F37DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402ADC05-DAFF-442B-99D8-42D070F37DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402ADC05-DAFF-442B-99D8-42D070F37DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAF1D79-96F2-430C-B22F-0E9EEF765FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAF1D79-96F2-430C-B22F-0E9EEF765FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAF1D79-96F2-430C-B22F-0E9EEF765FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAF1D79-96F2-430C-B22F-0E9EEF765FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF4FDD5A-C963-423B-A00A-7682ED6BD4BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF4FDD5A-C963-423B-A00A-7682ED6BD4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF4FDD5A-C963-423B-A00A-7682ED6BD4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF4FDD5A-C963-423B-A00A-7682ED6BD4BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

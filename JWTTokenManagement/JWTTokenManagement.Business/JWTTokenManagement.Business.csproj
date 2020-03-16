@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JWTTokenManagement.Models\JWTTokenManagement.Models.csproj" />
+    <ProjectReference Include="..\JWTTokenManagement.Repository\JWTTokenManagement.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
