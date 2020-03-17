@@ -12,6 +12,7 @@ namespace JWTTokenManagement.API
         {
             services.RegisterBusinessDependencies(configuration);
             services.AddTransient<IAuthorizationBusiness, AuthorizationBusiness>();
+            services.AddTransient<ITokenBusiness, TokenBusiness>();
             return services;
         }
     }
