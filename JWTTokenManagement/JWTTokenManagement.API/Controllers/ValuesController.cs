@@ -12,7 +12,7 @@ namespace JWTTokenManagement.API.Controllers
     public class ValuesController : ControllerBase
     {
         // GET api/values
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {

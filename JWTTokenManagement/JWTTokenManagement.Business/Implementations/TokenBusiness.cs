@@ -21,7 +21,8 @@ namespace JWTTokenManagement.Business.Implementations
         {
             var token = GenerateAccessToken(new List<Claim>()
                 {
-                    new Claim(ClaimTypes.Name, loginModel.UserName),                    
+                    new Claim(ClaimTypes.Name, loginModel.UserName),
+                    new Claim(ClaimTypes.Role, "Admin")
                 });
 
            // var refreshToken = GenerateRefreshToken();
