@@ -7,5 +7,9 @@ namespace JWTTokenManagement.Models.Constants
     public static class Constants
     {
         public const string ValidateLogin = "ValidateLogin";
+
+
+
+        public const string InvalidToken = "InValidToken"
     }
 }
