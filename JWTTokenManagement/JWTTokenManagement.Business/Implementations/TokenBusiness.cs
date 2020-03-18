@@ -1,6 +1,8 @@
 ﻿using JWTTokenManagement.Business.Contracts;
 using JWTTokenManagement.Models.Constants;
 using JWTTokenManagement.Models.Models;
+using JWTTokenManagement.Repository.Contracts;
+using JWTTokenManagement.Repository.DBModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,15 +11,18 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JWTTokenManagement.Business.Implementations
 {
     public class TokenBusiness : ITokenBusiness
     {
         private readonly IConfiguration _configuration;
-        public TokenBusiness(IConfiguration configuration)
+        private readonly IAuthorizationRepository _authorizationRepository;
+        public TokenBusiness(IConfiguration configuration , IAuthorizationRepository authorizationRepository)
         {
             _configuration = configuration;
+            _authorizationRepository = authorizationRepository;
         }
 
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
@@ -44,7 +49,7 @@ namespace JWTTokenManagement.Business.Implementations
             return principal;
         }
 
-        public TokenModel GenerateTokens(LoginModel loginModel)
+        public async Task<TokenModel> GenerateTokens(LoginModel loginModel)
         {
             var token = GenerateAccessToken(new List<Claim>()
                 {
@@ -53,8 +58,22 @@ namespace JWTTokenManagement.Business.Implementations
                 });
 
             var refreshToken = GenerateRefreshToken();
-            //SaveRefreshToken(username, deviceId, refreshToken);
+            await SaveRefreshToken(loginModel.UserName, refreshToken);
             return new TokenModel { AccessToken = token, RefreshToken = refreshToken };
+        }
+
+        private async Task SaveRefreshToken(string username, string refreshToken)
+        {
+            int userID = await _authorizationRepository.GetUserID(username);
+            if(userID > 0)
+            {
+                RefreshToken refreshTokenObj = new RefreshToken
+                {
+                    Token = refreshToken,
+                    UserId = userID
+                };
+                var addedToken =  await _authorizationRepository.SaveRefreshToken(refreshTokenObj);
+            }
         }
 
         private string GenerateAccessToken(IEnumerable<Claim> claims)

@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JWTTokenManagement.Business.Contracts
 {
     public interface ITokenBusiness
     {
-        TokenModel GenerateTokens(LoginModel loginModel);
+        Task<TokenModel> GenerateTokens(LoginModel loginModel);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }
 }

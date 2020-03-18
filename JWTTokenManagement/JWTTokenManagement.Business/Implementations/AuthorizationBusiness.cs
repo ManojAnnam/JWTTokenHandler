@@ -22,10 +22,11 @@ namespace JWTTokenManagement.Business.Implementations
         public async Task<bool> ValidateUser(LoginModel loginModel)
         {
             User user = Mappers.AuthorizationMapper.MapDomainUserModelToRepositoryUserModel(loginModel);
+
             bool isValidUser = await _authorizationRepository.ValidateUser(user);
             if (isValidUser)
             {
-                var tokens = _tokenBusiness.GenerateTokens(loginModel);
+                var tokens =await _tokenBusiness.GenerateTokens(loginModel);
             }
             return isValidUser;
         }

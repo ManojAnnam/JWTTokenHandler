@@ -10,6 +10,6 @@ namespace JWTTokenManagement.Models.Constants
 
 
 
-        public const string InvalidToken = "InValidToken"
+        public const string InvalidToken = "InValidToken";
     }
 }

@@ -18,3 +18,6 @@ REFERENCES [dbo].[User] ([UserID])
 )
 
 INSERT INTO [dbo].[User] values ('Manoj','123456')
+
+ALTER TABLE [dbo].[RefreshToken]
+ALTER COLUMN [Token] [nvarchar](100) NOT NULL

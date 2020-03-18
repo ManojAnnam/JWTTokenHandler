@@ -9,5 +9,9 @@ namespace JWTTokenManagement.Repository.Contracts
     public interface IAuthorizationRepository
     {
         Task<bool> ValidateUser(User user);
+
+        Task<int> GetUserID(string userName);
+
+        Task<RefreshToken> SaveRefreshToken(RefreshToken refreshToken);
     }
 }

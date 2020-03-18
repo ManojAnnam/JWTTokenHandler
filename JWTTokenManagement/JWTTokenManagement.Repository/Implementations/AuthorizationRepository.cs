@@ -1,9 +1,6 @@
 ﻿using JWTTokenManagement.Repository.Contracts;
 using JWTTokenManagement.Repository.DBModels;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JWTTokenManagement.Repository.Implementations
@@ -14,6 +11,23 @@ namespace JWTTokenManagement.Repository.Implementations
         public AuthorizationRepository(JWTTokenHandlerContext jWTHandlerContext)
         {
             _jWTHandlerContext = jWTHandlerContext;
+        }
+
+        public async Task<int> GetUserID(string userName)
+        {
+            var userData = await _jWTHandlerContext.User.FirstOrDefaultAsync(x => (x.UserName == userName));
+            if (userData != null)
+            {
+                return userData.UserId;
+            }
+            return 0;
+        }
+
+        public async Task<RefreshToken> SaveRefreshToken(RefreshToken refreshToken)
+        {
+            var refreshTokenData = await _jWTHandlerContext.RefreshToken.AddAsync(refreshToken);
+            int recordsSaved =   await _jWTHandlerContext.SaveChangesAsync();
+            return refreshToken;
         }
 
         public async Task<bool> ValidateUser(User user)
