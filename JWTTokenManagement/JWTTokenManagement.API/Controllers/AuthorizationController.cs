@@ -35,5 +35,20 @@ namespace JWTTokenManagement.API.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [Route(Constants.RefreshToken)]
+        [HttpPost]
+        public async Task<IActionResult> RefreshTokens(TokenModel tokenModel)
+        {
+            try
+            {
+                var result = await _authorizationBusiness.Refresh(tokenModel);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }

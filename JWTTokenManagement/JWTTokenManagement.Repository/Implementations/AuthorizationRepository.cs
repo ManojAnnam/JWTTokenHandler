@@ -26,7 +26,7 @@ namespace JWTTokenManagement.Repository.Implementations
         public async Task<RefreshToken> SaveRefreshToken(RefreshToken refreshToken)
         {
             var refreshTokenData = await _jWTHandlerContext.RefreshToken.AddAsync(refreshToken);
-            int recordsSaved =   await _jWTHandlerContext.SaveChangesAsync();
+            int recordsSaved = await _jWTHandlerContext.SaveChangesAsync();
             return refreshToken;
         }
 
@@ -38,6 +38,18 @@ namespace JWTTokenManagement.Repository.Implementations
                 return true;
             }
             return false;
+        }
+
+        public async Task<int> DeleteRefreshToken(string refreshToken, int userID)
+        {
+            int deletedRecordsCount = 0;
+            RefreshToken refreshTokenRecord = await _jWTHandlerContext.RefreshToken.FirstOrDefaultAsync(x => (x.UserId == userID && x.Token == refreshToken));
+            if (refreshTokenRecord != null)
+            {
+                _jWTHandlerContext.RefreshToken.Remove(refreshTokenRecord);
+                deletedRecordsCount = await _jWTHandlerContext.SaveChangesAsync();
+            }
+            return deletedRecordsCount;
         }
     }
 }

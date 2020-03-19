@@ -19,6 +19,20 @@ namespace JWTTokenManagement.Business.Implementations
             _authorizationRepository = authorizationRepository;
         }
 
+        public Task<TokenModel> Refresh(TokenModel refreshTokenParams)
+        {
+            var principal = _tokenBusiness.GetPrincipalFromExpiredToken(refreshTokenParams.AccessToken);
+            var username = principal.Identity.Name;          
+            //var savedRefreshToken = _userDataAccess.GetRefreshToken(username, deviceClaim.Value);
+            //if (savedRefreshToken != refreshTokenParams.RefreshToken)
+            //    throw new SecurityTokenException(InvalidRefreshTokenException);
+
+            //var newTokens = _tokenService.GenerateTokens(principal.Claims);
+            //_userDataAccess.SaveRefreshToken(username, deviceClaim.Value, newTokens.RefreshToken);
+            return null;
+        }
+
+
         public async Task<bool> ValidateUser(LoginModel loginModel)
         {
             User user = Mappers.AuthorizationMapper.MapDomainUserModelToRepositoryUserModel(loginModel);

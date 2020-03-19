@@ -1,7 +1,4 @@
 ﻿using JWTTokenManagement.Repository.DBModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JWTTokenManagement.Repository.Contracts
@@ -13,5 +10,7 @@ namespace JWTTokenManagement.Repository.Contracts
         Task<int> GetUserID(string userName);
 
         Task<RefreshToken> SaveRefreshToken(RefreshToken refreshToken);
+
+        Task<int> DeleteRefreshToken(string refreshToken, int UserID);
     }
 }

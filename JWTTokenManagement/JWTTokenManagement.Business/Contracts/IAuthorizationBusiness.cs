@@ -6,5 +6,6 @@ namespace JWTTokenManagement.Business.Contracts
     public interface IAuthorizationBusiness
     {
         Task<bool> ValidateUser(LoginModel loginModel);
+        Task<TokenModel> Refresh(TokenModel refreshTokenParams);
     }
 }
